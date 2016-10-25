@@ -11,30 +11,38 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var AutoGrowDirective;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            AutoGrowDirective = (function () {
+                function AutoGrowDirective(el, renderer) {
+                    this.el = el;
+                    this.renderer = renderer;
                 }
-                AppComponent.prototype.onClick = function ($event) {
-                    console.log($event);
+                AutoGrowDirective.prototype.onFocus = function () {
+                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '200px');
                 };
-                AppComponent = __decorate([
-                    core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <h1>Hello Angular</h1>\n        <button (click)=\"onClick($event)\">Submit</button>\n        <button on-click=\"onClick()\">Submit</button>\n        ",
+                AutoGrowDirective.prototype.onBlur = function () {
+                    this.renderer.setElementStyle(this.el.nativeElement, 'width', '120px');
+                };
+                AutoGrowDirective = __decorate([
+                    core_1.Directive({
+                        selector: '[autoGrow]',
+                        host: {
+                            '(focus)': 'onFocus()',
+                            '(blur)': 'onBlur()'
+                        }
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                    __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+                ], AutoGrowDirective);
+                return AutoGrowDirective;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("AutoGrowDirective", AutoGrowDirective);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=auto-grow.directive.js.map
