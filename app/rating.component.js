@@ -1,4 +1,4 @@
-System.register(['angular2/core', './like.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,39 +10,32 @@ System.register(['angular2/core', './like.component'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, like_component_1;
-    var AppComponent;
+    var core_1;
+    var RatingComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (like_component_1_1) {
-                like_component_1 = like_component_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
-                    this.tweet = {
-                        totalLikes: 10,
-                        isHighlighted: false
-                    };
+            RatingComponent = (function () {
+                function RatingComponent() {
+                    this.rated = false;
                 }
-                AppComponent.prototype.onClick = function ($event) {
-                    console.log($event);
+                RatingComponent.prototype.onClick = function () {
+                    this.rated = !this.rated;
                 };
-                AppComponent = __decorate([
+                RatingComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <h1>Hello Angular</h1>\n        <rating></rating>\n        <like [totalLikes]=\"tweet.totalLikes\" [isHighlighted]=\"tweet.isHighlighted\"></like>\n        ",
-                        directives: [like_component_1.LikeComponent]
+                        selector: 'rating',
+                        template: "\n        <i \n            class=\"glyphicon\"\n            [class.glyphicon-star-empty]=\"!rated\"\n            [class.glyphicon-star]=\"rated\"\n            (click)=\"onClick()\"\n        ></i>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], RatingComponent);
+                return RatingComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("RatingComponent", RatingComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=rating.component.js.map
