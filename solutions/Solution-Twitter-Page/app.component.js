@@ -1,4 +1,4 @@
-System.register(['angular2/core', './tweets.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './tweet.component', './tweet.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,32 @@ System.register(['angular2/core', './tweets.component'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, tweets_component_1;
+    var core_1, tweet_component_1, tweet_service_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (tweets_component_1_1) {
-                tweets_component_1 = tweets_component_1_1;
+            function (tweet_component_1_1) {
+                tweet_component_1 = tweet_component_1_1;
+            },
+            function (tweet_service_1_1) {
+                tweet_service_1 = tweet_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(tweetService) {
+                    this.tweets = tweetService.getTweets();
                 }
-                AppComponent.prototype.onClick = function ($event) {
-                    console.log($event);
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Hello Angular</h1>\n        <tweet-list></tweet-list>\n        ",
-                        directives: [tweets_component_1.TweetsComponent]
+                        template: "\n        <div *ngFor=\"#tweet of tweets\">\n            <tweet [data]=\"tweet\"></tweet>\n        </div>\n    ",
+                        directives: [tweet_component_1.TweetComponent],
+                        providers: [tweet_service_1.TweetService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [tweet_service_1.TweetService])
                 ], AppComponent);
                 return AppComponent;
             }());
