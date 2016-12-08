@@ -1,4 +1,4 @@
-System.register(['angular2/core', './tweets.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './zippy.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['angular2/core', './tweets.component'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, tweets_component_1;
+    var core_1, zippy_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (tweets_component_1_1) {
-                tweets_component_1 = tweets_component_1_1;
+            function (zippy_component_1_1) {
+                zippy_component_1 = zippy_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -30,8 +30,8 @@ System.register(['angular2/core', './tweets.component'], function(exports_1, con
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <h1>Hello Angular</h1>\n        <tweet-list></tweet-list>\n        ",
-                        directives: [tweets_component_1.TweetsComponent]
+                        template: "\n        <h1>Angular 2 App</h1>\n        <zippy title=\"Title of the zippy component\">\n            <div>This is the model content</div>\n        </zippy>\n        ",
+                        directives: [zippy_component_1.ZippyComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
